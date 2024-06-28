@@ -1,0 +1,13 @@
+ipywidgets
+matplotlib
+numpy
+pandas
+#openai==0.28
+openai>=1.0.0,<2.0.0
+streamlit
+streamlit-chat
+python-dotenv
+Flask==3.0.3
+#azure-search-documents
+ipykernel
+requests
