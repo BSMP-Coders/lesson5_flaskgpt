@@ -45,10 +45,13 @@ from openai import AzureOpenAI
    
 app = Flask(__name__)  
    
+import dotenv  
+# Load environment variables  
+dotenv.load_dotenv()  
 # Replace with your Azure OpenAI API key and endpoint  
-api_key = 'your_api_key'  
-endpoint = 'https://your-endpoint.openai.azure.com/'  
-   
+AOAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")  
+AOAI_KEY = os.getenv("AZURE_OPENAI_API_KEY")  
+
 openai_client = AzureOpenAI(api_key=api_key, azure_endpoint=endpoint, api_version="2024-05-01-preview")  
 MODEL_NAME = "gpt-35-turbo"  
    

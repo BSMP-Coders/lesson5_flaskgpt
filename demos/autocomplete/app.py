@@ -1,22 +1,22 @@
 from flask import Flask, request, jsonify, render_template  
 from openai import AzureOpenAI 
 import os
-
-app = Flask(__name__,template_folder='templates2')  # templates2 👈 adv for enchanced UI/UX
-
-# Replace with your Azure OpenAI API key and endpoint  
+import dotenv  
+# Load environment variables  
+dotenv.load_dotenv()  
 # Put the keys and variables here (never put your real keys in the code)
-AOAI_ENDPOINT = os.environ["AZURE_OPENAI_ENDPOINT"]
-AOAI_KEY = os.environ["AZURE_OPENAI_API_KEY"]
+AOAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")  
+AOAI_KEY = os.getenv("AZURE_OPENAI_API_KEY")  
 MODEL_NAME = "gpt-35-turbo"
 
-#openai_client = AzureOpenAI(endpoint, AzureKeyCredential(api_key))  
+
+app = Flask(__name__,template_folder='templates')  
+
 openai_client = AzureOpenAI(api_key=AOAI_KEY,azure_endpoint=AOAI_ENDPOINT,api_version="2024-05-01-preview",)
-MODEL_NAME= "gpt-35-turbo"
 
 @app.route('/')  
 def index():  
-    return render_template('index.html')  
+    return render_template('index.html')  # index2.html 👈 adv for enchanced UI/UX
   
 @app.route('/autocomplete', methods=['POST'])  
 def autocomplete():  

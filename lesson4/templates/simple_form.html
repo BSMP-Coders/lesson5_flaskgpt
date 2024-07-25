@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Information</title>
+</head>
+<body>
+    <p>Click <a href="/">here</a> to go back Homepage.</p> 
+  {% if user_data %}  <h1>Thank You!</h1>
+    <p>Hello, {{ user_data['name'] }}! You are {{ user_data['age'] }} years old and live in {{ user_data['city'] }}.</p>
+  {% else %}
+    <h1>Enter Your Details</h1>
+    <form action="/user" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" required><br>
+      <label for="age">Age:</label>
+      <input type="number" name="age" id="age" required><br>
+      <label for="city">City:</label>
+      <input type="text" name="city" id="city" required><br>
+      <button type="submit">Submit</button>
+    </form>
+  {% endif %}
+</body>
+</html>
